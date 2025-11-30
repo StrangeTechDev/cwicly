@@ -1,0 +1,67 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "cwicly/hook",
+    "title": "Hook",
+    "category": "cwicly",
+    "description": "Call the callback functions that have been added to an action hook.",
+    "keywords": [
+        "hook",
+        "woocommerce",
+        "wordpress",
+        "action",
+        "addaction",
+        "cwicly"
+    ],
+    "textdomain": "cwicly",
+    "supports": {
+        "customClassName": false,
+        "html": false
+    },
+    "attributes": {
+        "editorHidden": {
+            "type": "boolean"
+        },
+        "hook": {
+            "type": "string"
+        },
+        "customHook": {
+            "type": "string"
+        },
+        "pseudoContent": {
+            "type": "object"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "pseudoClasses": {
+            "type": "array"
+        },
+        "uniqueID": {
+            "type": "string"
+        },
+        "hideLoggedIn": {
+            "type": "boolean"
+        },
+        "hideGuest": {
+            "type": "boolean"
+        },
+        "hideConditionsToggle": {
+            "type": "boolean"
+        },
+        "hideConditions": {
+            "type": "array",
+            "default": []
+        },
+        "hideConditionsType": {
+            "type": "string",
+            "default": "&&"
+        },
+        "classID": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        }
+    }
+}

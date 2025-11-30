@@ -1,0 +1,5 @@
+@media screen and (min-width:783px) {
+    .edit-post-visual-editor__post-title-wrapper {
+        display: none;
+    }
+}

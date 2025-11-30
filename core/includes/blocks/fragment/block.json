@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "cwicly/fragment",
+    "title": "Fragment",
+    "category": "cwicly",
+    "description": "Call a conditioned global fragment to appear exactly where you place it on the page.",
+    "keywords": [
+        "fragment",
+        "part",
+        "wordpress",
+        "global",
+        "action",
+        "cwicly"
+    ],
+    "textdomain": "cwicly",
+    "supports": {
+        "customClassName": false,
+        "html": false
+    },
+    "attributes": {
+        "editorHidden": {
+            "type": "boolean"
+        },
+        "fragment": {
+            "type": "string"
+        },
+        "pseudoContent": {
+            "type": "object"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "pseudoClasses": {
+            "type": "array"
+        },
+        "uniqueID": {
+            "type": "string"
+        },
+        "hideLoggedIn": {
+            "type": "boolean"
+        },
+        "hideGuest": {
+            "type": "boolean"
+        },
+        "hideConditionsToggle": {
+            "type": "boolean"
+        },
+        "hideConditions": {
+            "type": "array",
+            "default": []
+        },
+        "hideConditionsType": {
+            "type": "string",
+            "default": "&&"
+        },
+        "classID": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        }
+    }
+}

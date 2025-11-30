@@ -1,0 +1,2100 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "cwicly/query",
+    "title": "Query",
+    "category": "cwicly",
+    "description": "Display posts or pages based on different query parameters and visual configurations.",
+    "keywords": [
+        "query",
+        "post",
+        "parameters",
+        "type",
+        "pages",
+        "cwicly"
+    ],
+    "textdomain": "cwicly",
+    "supports": {
+        "customClassName": false,
+        "html": false
+    },
+    "providesContext": {
+        "frontendRendering": "frontendRendering"
+    },
+    "script": "Infinite",
+    "usesContext": [
+        "postId",
+        "queryId",
+        "queryPageKey",
+        "queryTotal",
+        "queryCount",
+        "queryPage",
+        "queryPostPerPage",
+        "queryType",
+        "queryRendered",
+        "has_parent",
+        "queryCurrentPage",
+        "frontendRendering",
+        "rendered",
+        "queryPerPage",
+        "hasPosts",
+        "componentVariant",
+        "componentProperties",
+        "componentParentProperties",
+        "componentMetaProperties",
+        "componentVariantGroups",
+        "componentParentMetaProperties",
+        "componentParentClasses",
+        "componentIndex",
+        "componentVariants",
+        "isComponent",
+        "componentVariantClasses",
+        "componentVariantStyles",
+        "termQuery",
+        "cart_item",
+        "cart_key",
+        "filterInfo",
+        "filterType",
+        "post",
+        "product",
+        "paginateArgs",
+        "queryInherit",
+        "query_index",
+        "repeater_row",
+        "repeaters",
+        "taxterms",
+        "taxterms_index",
+        "userQuery",
+        "commentQuery",
+        "wooVariable",
+        "wooNotice"
+    ],
+    "attributes": {
+        "isTopComponentBlock": {
+            "type": "boolean"
+        },
+        "connectedClass": {
+            "type": "object"
+        },
+        "parentComponentClassID": {
+            "type": "array"
+        },
+        "componentConnectors": {
+            "type": "object"
+        },
+        "isComponentChild": {
+            "type": "string"
+        },
+        "additionalClassVariant": {
+            "type": "object"
+        },
+        "globalClassVariant": {
+            "type": "object"
+        },
+        "additionalClassesVariantsR": {
+            "type": "object"
+        },
+        "isStyling": {
+            "type": "boolean"
+        },
+        "forceShowID": {
+            "type": "boolean"
+        },
+        "forceShowClass": {
+            "type": "boolean"
+        },
+        "postsPerPage": {
+            "type": "number",
+            "default": 10
+        },
+        "editorHidden": {
+            "type": "boolean"
+        },
+        "has_parent": {
+            "type": "boolean",
+            "default": true
+        },
+        "skeletonActive": {
+            "type": "boolean",
+            "default": true
+        },
+        "skeletonSizeWidth": {
+            "type": "object"
+        },
+        "skeletonSizeHeight": {
+            "type": "object"
+        },
+        "skeletonBorderRadius": {
+            "type": "object"
+        },
+        "htmlRender": {
+            "type": "string"
+        },
+        "scrollDirectionActive": {
+            "type": "boolean"
+        },
+        "scrollDirectionOffsetUp": {
+            "type": "string"
+        },
+        "scrollDirectionOffsetDown": {
+            "type": "string"
+        },
+        "scrollDirectionToleranceUp": {
+            "type": "string"
+        },
+        "scrollDirectionToleranceDown": {
+            "type": "string"
+        },
+        "scrollDirectionAction": {
+            "type": "string"
+        },
+        "scrollDirectionTransitionDuration": {
+            "type": "string"
+        },
+        "queryId": {
+            "type": "number"
+        },
+        "query": {
+            "type": "object",
+            "default": {
+                "perPage": null,
+                "pages": 0,
+                "offset": 0,
+                "postType": "",
+                "categoryIds": [],
+                "tagIds": [],
+                "order": "desc",
+                "orderBy": "date",
+                "author": "",
+                "search": "",
+                "exclude": [],
+                "sticky": "",
+                "inherit": true
+            }
+        },
+        "queryInherit": {
+            "type": "boolean",
+            "default": true
+        },
+        "frontendRendering": {
+            "type": "boolean"
+        },
+        "queryType": {
+            "type": "string",
+            "default": "posts"
+        },
+        "queryExcludeCurrent": {
+            "type": "boolean"
+        },
+        "querySticky": {
+            "type": "boolean"
+        },
+        "queryPage": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPostType": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPerPage": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryOffset": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryMaxItems": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryOrder": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryOrderBy": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryMetaKey": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPassword": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPostPassword": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryExclude": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryInclude": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPostParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryInParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryNotInParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryTermExclude": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryTermInclude": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthor": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthorName": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthorIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthorNotIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "querySearch": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPostStatus": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentCount": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentCompare": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryPerm": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryMimeType": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryDate": {
+            "type": "array"
+        },
+        "queryDateRelation": {
+            "type": "string"
+        },
+        "queryTaxonomy": {
+            "type": "array"
+        },
+        "queryTaxonomyRelation": {
+            "type": "string"
+        },
+        "queryMeta": {
+            "type": "array"
+        },
+        "queryMetaRelation": {
+            "type": "string"
+        },
+        "queryOld": {
+            "type": "boolean"
+        },
+        "queryTaxonomies": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryObjectIDs": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryHideEmpty": {
+            "type": "boolean",
+            "default": true
+        },
+        "queryCount": {
+            "type": "boolean",
+            "default": true
+        },
+        "queryPadCount": {
+            "type": "boolean"
+        },
+        "queryExcludeTree": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryNumber": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryFields": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryName": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "querySlug": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryHierarchical": {
+            "type": "boolean"
+        },
+        "queryNameLike": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryDescriptionLike": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryGet": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": "empty"
+            }
+        },
+        "queryChildOf": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryChildless": {
+            "type": "boolean"
+        },
+        "queryRole": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryRoleIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryRoleNotIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryBlogID": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "querySearchColumn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentInParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentNotParent": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentPostID": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentID": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentNotID": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentIncludeUnapproved": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentKarma": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthorEmail": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryAuthorURL": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentAuthorIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryCommentAuthorNotIn": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWho": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryTotalCount": {
+            "type": "object",
+            "0": {
+                "type": "boolean"
+            }
+        },
+        "queryHasPublished": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooType": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooParentExclude": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooSKU": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooTag": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooCategory": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooWidth": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooHeight": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooWeight": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooLength": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooPrice": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooRegularPrice": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooSalePrice": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooTotalSales": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooVirtual": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDownloadable": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooFeatured": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooSoldIndividually": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooManageStock": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooReviewsAllowed": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooBackorders": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooVisibility": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooStockQuantity": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooStockStatus": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooTaxStatus": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooTaxClass": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooShippingClass": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDownloadLimit": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDownloadExpiry": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooAverageRating": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooReviewCount": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDateCreated": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDateModified": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDateOnSaleFrom": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "queryWooDateOnSaleTo": {
+            "type": "object",
+            "default": {
+                "source": "static",
+                "type": "",
+                "group": "",
+                "field": ""
+            }
+        },
+        "infiniteLoad": {
+            "type": "boolean"
+        },
+        "infiniteLoadMore": {
+            "type": "string"
+        },
+        "infiniteDirection": {
+            "type": "string"
+        },
+        "infiniteScrollThreshold": {
+            "type": "number"
+        },
+        "infiniteHistory": {
+            "type": "string"
+        },
+        "infiniteHistoryTitle": {
+            "type": "boolean"
+        },
+        "infiniteLoadingColor": {
+            "type": "string"
+        },
+        "infiniteLoading": {
+            "type": "string"
+        },
+        "infiniteEnd": {
+            "type": "string"
+        },
+        "infiniteError": {
+            "type": "string"
+        },
+        "infiniteButtonID": {
+            "type": "string"
+        },
+        "htmlAttributes": {
+            "type": "array",
+            "default": []
+        },
+        "relativeStyles": {
+            "type": "array",
+            "default": []
+        },
+        "relativeStylesIconSize": {
+            "type": "object"
+        },
+        "relativeStylesIconColor": {
+            "type": "object"
+        },
+        "pseudoContent": {
+            "type": "object"
+        },
+        "tiltControl": {
+            "type": "boolean"
+        },
+        "anchor": {
+            "type": "string"
+        },
+        "pseudoClasses": {
+            "type": "array"
+        },
+        "uniqueID": {
+            "type": "string"
+        },
+        "hideLoggedIn": {
+            "type": "boolean"
+        },
+        "hideGuest": {
+            "type": "boolean"
+        },
+        "hideConditionsToggle": {
+            "type": "boolean"
+        },
+        "hideConditions": {
+            "type": "array",
+            "default": []
+        },
+        "hideConditionsType": {
+            "type": "string",
+            "default": "&&"
+        },
+        "blockCSS": {
+            "type": "string"
+        },
+        "classID": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "additionalClass": {
+            "type": "array"
+        },
+        "additionalClassesR": {
+            "type": "string"
+        },
+        "globalClass": {
+            "type": "array"
+        },
+        "darkModeForce": {
+            "type": "string"
+        },
+        "customCSS": {
+            "type": "string",
+            "default": ""
+        },
+        "customSCSS": {
+            "type": "string"
+        },
+        "customCSSExtras": {
+            "type": "object"
+        },
+        "customSCSSExtras": {
+            "type": "object"
+        },
+        "sliderAnimation": {
+            "type": "string"
+        },
+        "sliderAnimationDuration": {
+            "type": "string"
+        },
+        "sliderAnimationDelay": {
+            "type": "string"
+        },
+        "tooltipActive": {
+            "type": "boolean"
+        },
+        "tooltipPlacement": {
+            "type": "string"
+        },
+        "tooltipSource": {
+            "type": "string"
+        },
+        "tooltipType": {
+            "type": "string"
+        },
+        "tooltipExtra": {
+            "type": "string"
+        },
+        "tooltipCustom": {
+            "type": "string"
+        },
+        "tooltipACFGroup": {
+            "type": "string"
+        },
+        "tooltipACFField": {
+            "type": "string"
+        },
+        "tooltipContent": {
+            "type": "string"
+        },
+        "tooltipDuration": {
+            "type": "string"
+        },
+        "tooltipDelay": {
+            "type": "string"
+        },
+        "tooltipTheme": {
+            "type": "string"
+        },
+        "tooltipArrow": {
+            "type": "boolean"
+        },
+        "tooltipAnimation": {
+            "type": "string"
+        },
+        "tooltipHideClick": {
+            "type": "boolean"
+        },
+        "tooltipFollowCursor": {
+            "type": "string"
+        },
+        "backgroundImageTypePseudo": {
+            "type": "object",
+            "default": {
+                "lghover": "static"
+            }
+        },
+        "backgroundClip": {
+            "type": "object"
+        },
+        "backgroundDynamicPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicWordpressTypePseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicACFGroupPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicACFFieldPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicACFFieldPlusPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicACFFieldLocationPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicACFFieldLocationIDPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicRepeaterFieldPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicStaticFallbackURLPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicStaticFallbackIDPseudo": {
+            "type": "object"
+        },
+        "backgroundDynamicStaticFallbackAltPseudo": {
+            "type": "object"
+        },
+        "backgroundImageType": {
+            "type": "string",
+            "default": "static"
+        },
+        "backgroundDynamic": {
+            "type": "string"
+        },
+        "backgroundDynamicWordpressType": {
+            "type": "string"
+        },
+        "backgroundDynamicACFGroup": {
+            "type": "string"
+        },
+        "backgroundDynamicACFField": {
+            "type": "string"
+        },
+        "backgroundDynamicACFFieldPlus": {
+            "type": "string"
+        },
+        "backgroundDynamicACFFieldLocation": {
+            "type": "string"
+        },
+        "backgroundDynamicACFFieldLocationID": {
+            "type": "number"
+        },
+        "backgroundDynamicRepeaterField": {
+            "type": "string"
+        },
+        "backgroundDynamicStaticFallbackURL": {
+            "type": "string"
+        },
+        "backgroundDynamicStaticFallbackID": {
+            "type": "number"
+        },
+        "backgroundDynamicStaticFallbackAlt": {
+            "type": "string"
+        },
+        "backgroundClipPath": {
+            "type": "boolean"
+        },
+        "backgroundClipRandomn": {
+            "type": "object"
+        },
+        "backgroundClipComplexity": {
+            "type": "object"
+        },
+        "backgroundClipHeight": {
+            "type": "object"
+        },
+        "backgroundClipChanged": {
+            "type": "string",
+            "default": "false"
+        },
+        "backgroundClipPathContent": {
+            "type": "string"
+        },
+        "backgroundYoutubeControl": {
+            "type": "boolean"
+        },
+        "backgroundVideoSource": {
+            "type": "string",
+            "default": "mp4"
+        },
+        "backgroundYoutubeURL": {
+            "type": "string"
+        },
+        "backgroundYoutubeLink": {
+            "type": "string"
+        },
+        "backgroundPlaceholderColor": {
+            "type": "string"
+        },
+        "backgroundType": {
+            "type": "object"
+        },
+        "backgroundSize": {
+            "type": "object"
+        },
+        "backgroundGradientColor": {
+            "type": "object"
+        },
+        "backgroundGradientOverlayColor": {
+            "type": "object"
+        },
+        "backgroundOverlayColor": {
+            "type": "object"
+        },
+        "backgroundRepeat": {
+            "type": "object"
+        },
+        "backgroundTop": {
+            "type": "object"
+        },
+        "backgroundLeft": {
+            "type": "object"
+        },
+        "backgroundManualWidth": {
+            "type": "object"
+        },
+        "backgroundManualHeight": {
+            "type": "object"
+        },
+        "backgroundBlendMode": {
+            "type": "object"
+        },
+        "backgroundBlendModeHover": {
+            "type": "string"
+        },
+        "backgroundAttachment": {
+            "type": "object"
+        },
+        "backgroundColor": {
+            "type": "object"
+        },
+        "backgroundGradientSelected": {
+            "type": "object"
+        },
+        "backgroundOverlayGradientSelected": {
+            "type": "object"
+        },
+        "backgroundFocalPoint": {
+            "type": "object"
+        },
+        "backgroundBlur": {
+            "type": "object"
+        },
+        "backgroundBrightness": {
+            "type": "object"
+        },
+        "backgroundContrast": {
+            "type": "number"
+        },
+        "backgroundGrayscale": {
+            "type": "object"
+        },
+        "backgroundHueRotate": {
+            "type": "object"
+        },
+        "backgroundInvert": {
+            "type": "object"
+        },
+        "backgroundSaturate": {
+            "type": "object"
+        },
+        "backgroundSepia": {
+            "type": "object"
+        },
+        "backgroundCover": {
+            "type": "boolean"
+        },
+        "backgroundVideoPlaceholder": {
+            "type": "string"
+        },
+        "backgroundPictureID": {
+            "type": "number"
+        },
+        "backgroundPictureIDHover": {
+            "type": "object"
+        },
+        "backgroundPictureURL": {
+            "type": "string"
+        },
+        "backgroundPictureURLHover": {
+            "type": "object"
+        },
+        "backgroundPictureAlt": {
+            "type": "string"
+        },
+        "backgroundPictureAltHover": {
+            "type": "object"
+        },
+        "backgroundVideoURL": {
+            "type": "string"
+        },
+        "backgroundVideoID": {
+            "type": "string"
+        },
+        "backgroundVideoWidth": {
+            "type": "string"
+        },
+        "backgroundVideoLoop": {
+            "type": "boolean"
+        },
+        "paddingTop": {
+            "type": "object"
+        },
+        "paddingLeft": {
+            "type": "object"
+        },
+        "paddingBottom": {
+            "type": "object"
+        },
+        "paddingRight": {
+            "type": "object"
+        },
+        "marginTop": {
+            "type": "object"
+        },
+        "marginLeft": {
+            "type": "object"
+        },
+        "marginBottom": {
+            "type": "object"
+        },
+        "marginRight": {
+            "type": "object"
+        },
+        "scrollMarginTop": {
+            "type": "object"
+        },
+        "scrollMarginLeft": {
+            "type": "object"
+        },
+        "scrollMarginBottom": {
+            "type": "object"
+        },
+        "scrollMarginRight": {
+            "type": "object"
+        },
+        "radiusTop": {
+            "type": "object"
+        },
+        "radiusLeft": {
+            "type": "object"
+        },
+        "radiusRight": {
+            "type": "object"
+        },
+        "radiusBottom": {
+            "type": "object"
+        },
+        "borderWidthTop": {
+            "type": "object"
+        },
+        "borderWidthLeft": {
+            "type": "object"
+        },
+        "borderWidthRight": {
+            "type": "object"
+        },
+        "borderWidthBottom": {
+            "type": "object"
+        },
+        "borderStyle": {
+            "type": "object"
+        },
+        "borderColor": {
+            "type": "object"
+        },
+        "borderOuterShadow": {
+            "type": "object"
+        },
+        "borderInnerShadow": {
+            "type": "object"
+        },
+        "outlineWidth": {
+            "type": "object"
+        },
+        "outlineOffset": {
+            "type": "object"
+        },
+        "outlineStyle": {
+            "type": "object"
+        },
+        "outlineColor": {
+            "type": "object"
+        },
+        "fontSize": {
+            "type": "object"
+        },
+        "fontFamily": {
+            "type": "string"
+        },
+        "fontFamilyExtras": {
+            "type": "object"
+        },
+        "fontWeight": {
+            "type": "object"
+        },
+        "fontSpacing": {
+            "type": "object"
+        },
+        "fontHeight": {
+            "type": "object"
+        },
+        "fontAlign": {
+            "type": "object"
+        },
+        "fontDecoration": {
+            "type": "object"
+        },
+        "fontTransform": {
+            "type": "object"
+        },
+        "fontStyle": {
+            "type": "object"
+        },
+        "fontOverflow": {
+            "type": "object"
+        },
+        "fontOverflowWrap": {
+            "type": "object"
+        },
+        "fontWhiteSpace": {
+            "type": "object"
+        },
+        "fontWordBreak": {
+            "type": "object"
+        },
+        "fontWordSpacing": {
+            "type": "object"
+        },
+        "fontStretch": {
+            "type": "object"
+        },
+        "fontSlant": {
+            "type": "object"
+        },
+        "fontCustomAxes": {
+            "type": "object"
+        },
+        "fontFallbackFonts": {
+            "type": "array"
+        },
+        "fontSmoothing": {
+            "type": "object"
+        },
+        "fontBackgroundClip": {
+            "type": "object"
+        },
+        "fontTextColor": {
+            "type": "object"
+        },
+        "fontTextLinkColor": {
+            "type": "object"
+        },
+        "fontGlobalStyle": {
+            "type": "number",
+            "default": 1
+        },
+        "fontGlobalStyleControl": {
+            "type": "boolean"
+        },
+        "fontLocation": {
+            "type": "string",
+            "default": "google"
+        },
+        "fontLocationExtras": {
+            "type": "object"
+        },
+        "containerSizeHeight": {
+            "type": "object"
+        },
+        "containerSizeMinHeight": {
+            "type": "object"
+        },
+        "containerSizeMaxHeight": {
+            "type": "object"
+        },
+        "containerSizeWidth": {
+            "type": "object"
+        },
+        "containerSizeMinWidth": {
+            "type": "object"
+        },
+        "containerSizeMaxWidth": {
+            "type": "object"
+        },
+        "containerAspectRatio": {
+            "type": "object"
+        },
+        "containerObjectFit": {
+            "type": "object"
+        },
+        "containerLayoutTag": {
+            "type": "string",
+            "default": "div"
+        },
+        "containerLayoutOverflow": {
+            "type": "object"
+        },
+        "containerLayoutVisibility": {
+            "type": "object"
+        },
+        "containerLayoutZIndex": {
+            "type": "object"
+        },
+        "containerLayoutJustifyContent": {
+            "type": "object"
+        },
+        "containerLayoutJustifyItems": {
+            "type": "object"
+        },
+        "containerLayoutAlignItems": {
+            "type": "object"
+        },
+        "containerLayoutAlignContent": {
+            "type": "object"
+        },
+        "containerLayoutPosition": {
+            "type": "object",
+            "default": {
+                "lg": "relative"
+            }
+        },
+        "containerLayoutPositionTop": {
+            "type": "object"
+        },
+        "containerLayoutPositionLeft": {
+            "type": "object"
+        },
+        "containerLayoutPositionRight": {
+            "type": "object"
+        },
+        "containerLayoutPositionBottom": {
+            "type": "object"
+        },
+        "containerLayoutDisplay": {
+            "type": "object",
+            "default": {
+                "lg": "block"
+            }
+        },
+        "containerLayoutFlexDirection": {
+            "type": "object"
+        },
+        "containerLayoutFlexDirectionReverse": {
+            "type": "object"
+        },
+        "containerLayoutChildren": {
+            "type": "object"
+        },
+        "containerLayoutFlexGrow": {
+            "type": "object"
+        },
+        "containerLayoutFlexShrink": {
+            "type": "object"
+        },
+        "containerLayoutFlexBasis": {
+            "type": "object"
+        },
+        "containerLayoutFlexRowGap": {
+            "type": "object"
+        },
+        "containerLayoutFlexColumnGap": {
+            "type": "object"
+        },
+        "containerLayoutAlignSelf": {
+            "type": "object"
+        },
+        "containerLayoutJustifySelf": {
+            "type": "object"
+        },
+        "containerLayoutFlexOrder": {
+            "type": "object"
+        },
+        "containerLayoutGridTemplateColumns": {
+            "type": "object"
+        },
+        "containerLayoutGridTemplateRows": {
+            "type": "object"
+        },
+        "containerLayoutGridTemplateAreas": {
+            "type": "object"
+        },
+        "containerLayoutGridTemplateItems": {
+            "type": "object"
+        },
+        "containerLayoutGridAutoFlow": {
+            "type": "object"
+        },
+        "containerLayoutGridAutoRows": {
+            "type": "object"
+        },
+        "containerLayoutGridAutoColumns": {
+            "type": "object"
+        },
+        "containerLayoutGridItemArea": {
+            "type": "object"
+        },
+        "containerLayoutGridItemColumnStart": {
+            "type": "object"
+        },
+        "containerLayoutGridItemColumnEnd": {
+            "type": "object"
+        },
+        "containerLayoutGridItemRowStart": {
+            "type": "object"
+        },
+        "containerLayoutGridItemRowEnd": {
+            "type": "object"
+        },
+        "listStylePosition": {
+            "type": "object"
+        },
+        "listStyleType": {
+            "type": "object"
+        },
+        "columnsCount": {
+            "type": "object"
+        },
+        "separatorControlTop": {
+            "type": "boolean"
+        },
+        "separatorControlFlipTop": {
+            "type": "boolean"
+        },
+        "separatorControlShadowTop": {
+            "type": "boolean"
+        },
+        "separatorColorTop": {
+            "type": "object"
+        },
+        "separatorTypeTop": {
+            "type": "string",
+            "default": "waves1"
+        },
+        "separatorHeightTop": {
+            "type": "object"
+        },
+        "separatorWidthTop": {
+            "type": "object"
+        },
+        "separatorControlFlipVerticalTop": {
+            "type": "boolean"
+        },
+        "separatorControlFlipVerticalBottom": {
+            "type": "boolean"
+        },
+        "separatorControlBottom": {
+            "type": "boolean"
+        },
+        "separatorControlFlipBottom": {
+            "type": "boolean"
+        },
+        "separatorControlShadowBottom": {
+            "type": "boolean"
+        },
+        "separatorColorBottom": {
+            "type": "object"
+        },
+        "separatorTypeBottom": {
+            "type": "string",
+            "default": "waves1"
+        },
+        "separatorHeightBottom": {
+            "type": "object"
+        },
+        "separatorWidthBottom": {
+            "type": "object"
+        },
+        "animateOnScrollType": {
+            "type": "string"
+        },
+        "animateOnScrollOnce": {
+            "type": "boolean"
+        },
+        "animateOnScrollDuration": {
+            "type": "string"
+        },
+        "animateOnScrollDelay": {
+            "type": "string"
+        },
+        "animateOnScrollStartAnchor": {
+            "type": "string"
+        },
+        "animateOnScrollEasing": {
+            "type": "string"
+        },
+        "effectsOpacity": {
+            "type": "object"
+        },
+        "effectsMixBlendMode": {
+            "type": "object"
+        },
+        "effectsTransition": {
+            "type": "object"
+        },
+        "effectsTransitionDuration": {
+            "type": "object"
+        },
+        "effectsTransitionDelay": {
+            "type": "object"
+        },
+        "effectsTransitionCSS": {
+            "type": "object"
+        },
+        "effectsTransitionTiming": {
+            "type": "object"
+        },
+        "effectsBlur": {
+            "type": "object"
+        },
+        "effectsBrightness": {
+            "type": "object"
+        },
+        "effectsContrast": {
+            "type": "object"
+        },
+        "effectsGrayscale": {
+            "type": "object"
+        },
+        "effectsHueRotate": {
+            "type": "object"
+        },
+        "effectsInvert": {
+            "type": "object"
+        },
+        "effectsSaturate": {
+            "type": "object"
+        },
+        "effectsSepia": {
+            "type": "object"
+        },
+        "effectsDropShadow": {
+            "type": "object"
+        },
+        "effectsBackdropBlur": {
+            "type": "object"
+        },
+        "effectsBackdropBrightness": {
+            "type": "object"
+        },
+        "effectsBackdropContrast": {
+            "type": "object"
+        },
+        "effectsBackdropGrayscale": {
+            "type": "object"
+        },
+        "effectsBackdropHueRotate": {
+            "type": "object"
+        },
+        "effectsBackdropInvert": {
+            "type": "object"
+        },
+        "effectsBackdropSaturate": {
+            "type": "object"
+        },
+        "effectsBackdropSepia": {
+            "type": "object"
+        },
+        "effectsBackdropDropShadow": {
+            "type": "object"
+        },
+        "effectsTextShadowColor": {
+            "type": "object"
+        },
+        "effectsTextShadowHorizontal": {
+            "type": "object"
+        },
+        "effectsTextShadowVertical": {
+            "type": "object"
+        },
+        "effectsTextShadowBlur": {
+            "type": "object"
+        },
+        "effectsAnimationName": {
+            "type": "object"
+        },
+        "effectsAnimationDuration": {
+            "type": "object"
+        },
+        "effectsAnimationTiming": {
+            "type": "object"
+        },
+        "effectsAnimationDelay": {
+            "type": "object"
+        },
+        "effectsAnimationItiration": {
+            "type": "object"
+        },
+        "effectsAnimationDirection": {
+            "type": "object"
+        },
+        "effectsAnimationFillMode": {
+            "type": "object"
+        },
+        "effectsTiltControl": {
+            "type": "boolean"
+        },
+        "effectsTiltReverse": {
+            "type": "boolean"
+        },
+        "effectsTiltMax": {
+            "type": "string"
+        },
+        "effectsTiltStartX": {
+            "type": "string"
+        },
+        "effectsTiltStartY": {
+            "type": "string"
+        },
+        "effectsTiltPerspective": {
+            "type": "string"
+        },
+        "effectsTiltScale": {
+            "type": "string"
+        },
+        "effectsTiltSpeed": {
+            "type": "string"
+        },
+        "effectsTiltTransition": {
+            "type": "boolean",
+            "default": true
+        },
+        "effectsTiltAxis": {
+            "type": "string"
+        },
+        "effectsTiltReset": {
+            "type": "boolean",
+            "default": true
+        },
+        "effectsTiltGlare": {
+            "type": "boolean"
+        },
+        "transformsTranslateControl": {
+            "type": "boolean"
+        },
+        "transformsTranslateControlSpec": {
+            "type": "object"
+        },
+        "transformsSkewControlSpec": {
+            "type": "object"
+        },
+        "transformsRotateControlSpec": {
+            "type": "object"
+        },
+        "transformsPerspectiveControlSpec": {
+            "type": "object"
+        },
+        "transformsRotate3DControlSpec": {
+            "type": "object"
+        },
+        "transformsScaleControlSpec": {
+            "type": "object"
+        },
+        "transformsSkewControl": {
+            "type": "boolean"
+        },
+        "transformsRotateControl": {
+            "type": "boolean"
+        },
+        "transformsPerspectiveControl": {
+            "type": "boolean"
+        },
+        "transformsRotate3DControl": {
+            "type": "boolean"
+        },
+        "transformsScaleControl": {
+            "type": "boolean"
+        },
+        "transformsTranslateX": {
+            "type": "object"
+        },
+        "transformsTranslateY": {
+            "type": "object"
+        },
+        "transformsTranslateZ": {
+            "type": "object"
+        },
+        "transformsSkewX": {
+            "type": "object"
+        },
+        "transformsSkewY": {
+            "type": "object"
+        },
+        "transformsRotate": {
+            "type": "object"
+        },
+        "transformsRotateX": {
+            "type": "object"
+        },
+        "transformsRotateY": {
+            "type": "object"
+        },
+        "transformsRotateZ": {
+            "type": "object"
+        },
+        "transformsPerspective": {
+            "type": "object"
+        },
+        "transformsPerspectiveIndividual": {
+            "type": "boolean"
+        },
+        "transformsPreserve3D": {
+            "type": "boolean"
+        },
+        "transformsRotate3DX": {
+            "type": "object"
+        },
+        "transformsRotate3DY": {
+            "type": "object"
+        },
+        "transformsRotate3DZ": {
+            "type": "object"
+        },
+        "transformsRotate3DAngle": {
+            "type": "object"
+        },
+        "transformsScaleY": {
+            "type": "object"
+        },
+        "transformsScaleX": {
+            "type": "object"
+        },
+        "transformsScaleZ": {
+            "type": "object"
+        },
+        "transformsBackfaceVisibility": {
+            "type": "object"
+        },
+        "transformsOrigin": {
+            "type": "object"
+        },
+        "interactionsCursor": {
+            "type": "object"
+        },
+        "interactionsUserSelect": {
+            "type": "object"
+        },
+        "interactionsPointerEvents": {
+            "type": "object"
+        }
+    }
+}

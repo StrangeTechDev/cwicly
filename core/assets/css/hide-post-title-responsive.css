@@ -1,0 +1,5 @@
+@media screen and (max-width:782px) {
+    .edit-post-visual-editor__post-title-wrapper {
+        display: none;
+    }
+}

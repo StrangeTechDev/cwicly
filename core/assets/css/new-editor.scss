@@ -1,0 +1,65 @@
+.block-editor-block-contextual-toolbar.is-fixed {
+
+    background: var(--cc-inspector-background);
+
+    .block-editor-block-parent-selector,
+    .components-toolbar-group {
+        background: var(--cc-inspector-background);
+    }
+
+    .components-button {
+        color: var(--cc-inspector-text-color);
+    }
+
+
+    &.is-collapsed:after {
+        background: linear-gradient(90deg, var(--cc-inspector-background), transparent);
+    }
+
+    .components-button:not(:disabled, [aria-disabled=true]):active {
+        color: var(--cc-inspector-input-color);
+    }
+
+    .components-button:focus:before {
+        box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color), inset 0 0 0 4px var(--cc-inspector-background);
+        outline: 2px solid transparent;
+    }
+
+    .block-editor-block-toolbar .components-toolbar,
+    .block-editor-block-toolbar .components-toolbar-group {
+        border-right-color: var(--cc-input-border);
+    }
+
+    &>.block-editor-block-toolbar__group-expand-fixed-toolbar:before,
+    &>.block-editor-block-toolbar.is-showing-movers:before,
+    &>.block-editor-block-toolbar__group-collapse-fixed-toolbar:before,
+    .block-editor-block-toolbar .components-toolbar-group:after,
+    .block-editor-block-toolbar .components-toolbar:after {
+        background-color: var(--cc-input-border);
+    }
+}
+
+@media (min-width: 960px) {
+    .is-fullscreen-mode .block-editor-block-contextual-toolbar.is-fixed {
+        width: calc(100% - 580px);
+    }
+}
+
+.edit-site-document-actions .components-button,
+.edit-site-document-actions,
+.edit-site-document-actions .components-button:hover,
+.edit-site-document-actions:hover,
+.editor-document-bar__command.components-button,
+.editor-document-bar__command.components-button:hover,
+.editor-document-bar__command,
+.editor-document-bar__command:hover {
+    --wp-block-synced-color: var(--cc-comp_sc-builder);
+    background: var(--cc-comp_sc-main-bg);
+    color: var(--cc-inspector-input-color);
+}
+
+.edit-site-document-actions.is-page .edit-site-document-actions__title,
+.edit-site-document-actions.is-page .edit-site-document-actions__title h1 {
+    color: var(--cc-inspector-input-color);
+
+}

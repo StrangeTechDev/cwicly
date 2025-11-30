@@ -1,0 +1,12 @@
+<wpml-config>
+    <gutenberg-blocks>
+        <gutenberg-block type="cwicly/code" translate="0" />
+        <gutenberg-block type="cwicly/fragment" translate="0" />
+        <gutenberg-block type="cwicly/columns" translate="0" />
+        <gutenberg-block type="cwicly/column" translate="0" />
+        <gutenberg-block type="cwicly/icon" translate="0" />
+        <gutenberg-block type="cwicly/hook" translate="0" />
+        <gutenberg-block type="cwicly/div" translate="0" />
+        <gutenberg-block type="cwicly/styler" translate="0" />
+    </gutenberg-blocks>
+</wpml-config>

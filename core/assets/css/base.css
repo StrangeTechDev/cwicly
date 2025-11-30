@@ -1,0 +1,87 @@
+/* NORMALISE */
+.editor-styles-wrapper input[type="color"],
+.editor-styles-wrapper input[type="date"],
+.editor-styles-wrapper input[type="datetime-local"],
+.editor-styles-wrapper input[type="datetime"],
+.editor-styles-wrapper input[type="email"],
+.editor-styles-wrapper input[type="month"],
+.editor-styles-wrapper input[type="number"],
+.editor-styles-wrapper input[type="password"],
+.editor-styles-wrapper input[type="search"],
+.editor-styles-wrapper input[type="tel"],
+.editor-styles-wrapper input[type="text"],
+.editor-styles-wrapper input[type="time"],
+.editor-styles-wrapper input[type="url"],
+.editor-styles-wrapper input[type="week"],
+/* .editor-styles-wrapper select, */
+.editor-styles-wrapper textarea {
+    line-height: revert;
+    padding: revert;
+    min-height: revert;
+    border-radius: revert;
+    /* border: revert;
+    background-color: revert;
+    color: revert; */
+}
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+.cwicly-inspector button, .cwicly-designs-wrapper button, .cc-popover-content-color .components-popover__content button {
+    color: inherit;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer;
+    background: initial;
+}
+figure {
+    margin: 0;
+}
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+dd,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+cite {
+    font-style: normal;
+}
+fieldset {
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+/* NORMALISE */
+.wp-core-ui select {
+    font-size: revert;
+    line-height: revert;
+    color: revert;
+    border-color: revert;
+    box-shadow: revert;
+    border-radius: revert;
+    padding: revert;
+    min-height: revert;
+    max-width: revert;
+    -webkit-appearance: revert;
+    background: revert;
+    background-size: revert;
+    cursor: revert;
+    vertical-align: revert;
+}

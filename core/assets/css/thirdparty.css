@@ -1,0 +1,4 @@
+.is-root-container.block-editor-block-list__layout,
+.is-root-container .edit-site-block-editor__block-list {
+    display: block;
+}
