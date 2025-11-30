@@ -39,7 +39,7 @@ class Init {
 	public function init() {
 		new Options();
 		new Setup();
-		new License();
+		//new License();
 		new Settings();
 		if ( CC_WOOCOMMERCE ) {
 			new WooCommerce();

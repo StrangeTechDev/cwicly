@@ -19,7 +19,7 @@ require_once CWICLY_DIR_PATH . 'core/includes/classes/class-themer.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-frontend.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-helpers.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-capabilities.php';
-require_once CWICLY_DIR_PATH . 'core/includes/classes/class-license.php';
+//require_once CWICLY_DIR_PATH . 'core/includes/classes/class-license.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-actions.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-acf.php';
 require_once CWICLY_DIR_PATH . 'core/includes/classes/class-query.php';

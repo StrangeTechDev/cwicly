@@ -43,7 +43,7 @@ define( 'CWICLY_URL', plugin_dir_url( __FILE__ ) . '' );
 
 define( 'CWICLY_FILE', __FILE__ );
 
-define( 'CWICLY_LICENSE_PAGE', 'cwicly' );
+//define( 'CWICLY_LICENSE_PAGE', 'cwicly' );
 
 define( 'CWICLY_ITEM_NAME', 'Cwicly' );
 
@@ -108,9 +108,9 @@ if ( ! version_compare( PHP_VERSION, '5.4', '>=' ) ) {
 	add_action( 'admin_notices', array( 'Cwicly_Initial', 'wordpress_error_notice' ) ); // WordPress Version Check.
 } else {
 	require_once CWICLY_DIR_PATH . 'core/includes/blocks/maker.php'; // Load Cwicly Blocks.
-	if ( file_exists( CWICLY_DIR_PATH . 'license-data.php' ) ) {
-		require_once CWICLY_DIR_PATH . 'license-data.php'; // Load Cwicly License DATA.
-	}
+	// if ( file_exists( CWICLY_DIR_PATH . 'license-data.php' ) ) {
+	// 	require_once CWICLY_DIR_PATH . 'license-data.php'; // Load Cwicly License DATA.
+	// }
 	require_once CWICLY_DIR_PATH . 'core/includes/helpers/theme-maker.php'; // Load Cwicly Themer.
 	require_once CWICLY_DIR_PATH . 'core/includes/api/maker.php'; // Load Cwicly API.
 	require_once CWICLY_DIR_PATH . 'core/includes/dynamic/maker.php'; // Load Cwicly Blocks.

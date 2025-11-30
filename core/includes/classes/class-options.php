@@ -262,11 +262,11 @@ class Options {
 	 * Register all the options so that they can be accessible via the REST API.
 	 */
 	public function register_options() {
-		register_setting(
-			'cwicly',
-			'cwicly_plugin_license_key_status',
-			array( 'show_in_rest' => true )
-		);
+		// register_setting(
+		// 	'cwicly',
+		// 	'cwicly_plugin_license_key_status',
+		// 	array( 'show_in_rest' => true )
+		// );
 		register_setting(
 			'cwicly',
 			'cwicly_font_cols',
@@ -357,11 +357,11 @@ class Options {
 			'cwicly_tailwind_classes',
 			array( 'show_in_rest' => true )
 		);
-		register_setting(
-			'cwicly',
-			'cwicly_license_check',
-			array( 'show_in_rest' => true )
-		);
+		// register_setting(
+		// 	'cwicly',
+		// 	'cwicly_license_check',
+		// 	array( 'show_in_rest' => true )
+		// );
 		register_setting(
 			'cwicly',
 			'cwicly_global_classes_folders',

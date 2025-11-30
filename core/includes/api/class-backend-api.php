@@ -201,18 +201,18 @@ class Backend_API extends \WP_REST_Controller {
 			)
 		);
 
-		$base11 = 'cwicly_license';
-		register_rest_route(
-			$namespace,
-			'/' . $base11,
-			array(
-				array(
-					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'get_cwicly_license' ),
-					'permission_callback' => array( '\Cwicly\Helpers', 'permissions_check' ),
-				),
-			)
-		);
+		// $base11 = 'cwicly_license';
+		// register_rest_route(
+		// 	$namespace,
+		// 	'/' . $base11,
+		// 	array(
+		// 		array(
+		// 			'methods'             => \WP_REST_Server::READABLE,
+		// 			'callback'            => array( $this, 'get_cwicly_license' ),
+		// 			'permission_callback' => array( '\Cwicly\Helpers', 'permissions_check' ),
+		// 		),
+		// 	)
+		// );
 
 		$base12 = 'cwicly_global_css';
 		register_rest_route(
@@ -1213,22 +1213,22 @@ class Backend_API extends \WP_REST_Controller {
 	/**
 	 * Retrieve the installed Cwicly license
 	 */
-	public function get_cwicly_license() {
-		try {
-			{
-			if ( defined( 'CC_LICENSE_KEY' ) ) {
-				return CC_LICENSE_KEY;
-			} else {
-				return false;
-			}
-			}
-		} catch ( \Exception $e ) {
-			return array(
-				'success' => false,
-				'message' => $e->getMessage(),
-			);
-		}
-	}
+	// public function get_cwicly_license() {
+	// 	try {
+	// 		{
+	// 		if ( defined( 'CC_LICENSE_KEY' ) ) {
+	// 			return CC_LICENSE_KEY;
+	// 		} else {
+	// 			return false;
+	// 		}
+	// 		}
+	// 	} catch ( \Exception $e ) {
+	// 		return array(
+	// 			'success' => false,
+	// 			'message' => $e->getMessage(),
+	// 		);
+	// 	}
+	// }
 
 	/**
 	 * Update Global CSS
@@ -1335,15 +1335,15 @@ class Backend_API extends \WP_REST_Controller {
 				$options = get_role( 'administrator' )->capabilities;
 			}
 			if ( $data->get_param( 'option' ) ) {
-				if ( $data->get_param( 'option' ) === 'theone' ) {
-					$options = get_option( 'cwicly_license_check' );
-				} else {
+				// if ( $data->get_param( 'option' ) === 'theone' ) {
+				// 	$options = get_option( 'cwicly_license_check' );
+				// } else {
 
 					if ( ! in_array( $data->get_param( 'option' ), self::$accepted_options, true ) ) {
 						throw new \Exception( 'Option not allowed!' );
 					}
 					$options = get_option( $data->get_param( 'option' ) );
-				}
+				// }
 			}
 			return array(
 				'success'  => true,

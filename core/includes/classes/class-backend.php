@@ -135,7 +135,7 @@ class Backend {
 					'oldButton'          => $old_button,
 					'siteEditor'         => $site_editor,
 					'noContainerDisplay' => $no_container_display,
-					'clc'                => get_option( 'cwicly_license_check' ),
+					//'clc'                => get_option( 'cwicly_license_check' ),
 					'showPostTitle'      => Capabilities::permission( 'gutenbergEditor', 'hidePostTitle', true ),
 					'gmap'               => $api_key,
 					'components'         => $components_references,
@@ -207,7 +207,7 @@ class Backend {
 		// GLOBAL CLASSES RENDERED.
 
 		// LICENSE CHECK.
-		$licensecheck = get_option( 'cwicly_license_check' );
+		//$licensecheck = get_option( 'cwicly_license_check' );
 		// LICENSE CHECK.
 
 		// BREAKPOINTS.
@@ -298,7 +298,7 @@ class Backend {
 			'capabilities'            => $capabilities,
 			'globalinteractions'      => $globalinteractions,
 			'globalclassesrendered'   => $globalclassesrendered,
-			'licensecheck'            => $licensecheck,
+			// 'licensecheck'            => $licensecheck,
 			'breakpoints'             => $breakpoints,
 			'globalfonts'             => $globalfonts,
 			'localfonts'              => $localfonts,
