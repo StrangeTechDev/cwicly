@@ -28,7 +28,8 @@ jQuery(function ($) {
 
   if (
     (pagePath.includes("/wp-admin/post.php") &&
-      params.get("action") == "edit") ||
+      params.get("action") == "edit") || 
+    pagePath.includes("/wp-admin/post-new.php") || 
     (pagePath.includes("/wp-admin/site-editor.php") &&
       params.get("canvas") == "edit")
   ) {
