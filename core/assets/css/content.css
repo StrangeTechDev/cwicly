@@ -1104,3 +1104,14 @@ body.admin-color-sunrise {
         --wp-admin-border-width-focus: 1.5px
     }
 }
+
+/**
+ * Explicit active selection styling
+ * 
+ * @author Kevin Shenk (batonac)
+ * @since 1.4.7
+ */
+::selection {
+    color: #fff;
+    background-color: var(--wp-admin-theme-color);
+}
