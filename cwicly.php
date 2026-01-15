@@ -20,6 +20,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Load Composer autoloader for plugin-update-checker.
+require_once __DIR__ . '/vendor/autoload.php';
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+// Determine if this is the free version based on ACF bundling.
+// The full version includes ACF Pro, the free version does not.
+if ( ! defined( 'CWICLY_IS_FREE' ) ) {
+	define( 'CWICLY_IS_FREE', ! file_exists( __DIR__ . '/core/includes/acf/acf.php' ) );
+}
+
+// Initialize GitHub update checker.
+$cwiclyUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/StrangeTechDev/cwicly/',
+	__FILE__,
+	'cwicly'
+);
+
+// Use GitHub releases for updates - select the appropriate asset based on version type.
+// Asset naming: cwicly-plugin_v1.4.7-free.zip (free) or cwicly-plugin_v1.4.7.zip (full).
+if ( CWICLY_IS_FREE ) {
+	$cwiclyUpdateChecker->getVcsApi()->enableReleaseAssets( '/-free\.zip$/i' );
+} else {
+	// Match the full version zip (ends with version number.zip, NOT -free.zip).
+	$cwiclyUpdateChecker->getVcsApi()->enableReleaseAssets( '/cwicly-plugin_v[\d.]+\.zip$/i' );
+}
+
 // Define Version.
 define( 'CWICLY_VERSION', '1.4.7' );
 
