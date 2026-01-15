@@ -21,7 +21,3 @@ require_once CWICLY_DIR_PATH . 'core/includes/helpers/class-cwicly-comment-walke
 if ( CC_WOOCOMMERCE ) {
 	require_once CWICLY_DIR_PATH . 'core/includes/helpers/class-cwicly-extend-woocommerce-store.php';
 }
-
-// if ( ! class_exists( 'Cwicly_Plugin_Updater' ) ) {
-// 	require_once CWICLY_DIR_PATH . 'core/includes/helpers/class-cwicly-plugin-updater.php';
-// }
