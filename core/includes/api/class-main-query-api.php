@@ -616,7 +616,8 @@ class Main_Query_API extends \WP_REST_Posts_Controller {
 								$prep['featured_image'] = $this->get_image( $prep['featured_media'] );
 							}
 							if ( isset( $dynamic_args['specific'] ) && $dynamic_args['specific'] ) {
-								$prep['dynamic_specifics'] = $this->process_specific_dynamics( $dynamic_args['specific'], $wp_query->post->ID );
+								// Pass the post object to preserve Relevanssi data (excerpt, relevance_score).
+								$prep['dynamic_specifics'] = $this->process_specific_dynamics( $dynamic_args['specific'], $wp_query->post->ID, '', '', $wp_query->post );
 							}
 							$prep['terms'] = $this->get_terms( $wp_query->post->ID );
 							if ( isset( $prep['_links'] ) && $prep['_links'] ) {
@@ -1245,17 +1246,24 @@ class Main_Query_API extends \WP_REST_Posts_Controller {
 	/**
 	 * Process the specific dynamics.
 	 *
-	 * @param array  $args        The arguments.
-	 * @param int    $id          The ID.
-	 * @param string $query_type  The query type.
+	 * @param array  $args         The arguments.
+	 * @param int    $id           The ID.
+	 * @param string $query_type   The query type.
 	 * @param object $query_object The query object.
+	 * @param object $post_object  The post object (optional, used to preserve Relevanssi data).
 	 *
 	 * @return array
 	 */
-	protected function process_specific_dynamics( $args, $id = null, $query_type = '', $query_object = '' ) {
+	protected function process_specific_dynamics( $args, $id = null, $query_type = '', $query_object = '', $post_object = null ) {
 		if ( $id ) {
 			global $post;
-			$post = get_post( $id ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			// If a post object is provided (e.g., from Relevanssi-processed query), use it directly.
+			// This preserves Relevanssi's custom excerpt and relevance_score.
+			if ( $post_object && is_object( $post_object ) ) {
+				$post = $post_object; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			} else {
+				$post = get_post( $id ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			}
 		}
 		$final = array();
 		foreach ( $args as $arg ) {
@@ -1534,26 +1542,55 @@ class Main_Query_API extends \WP_REST_Posts_Controller {
 						} else {
 							$final['postexcerpt'] = array();
 						}
-						add_filter( 'get_the_excerpt', array( '\Cwicly\Helpers', 'excerpt_gutenberg' ), 10, 2 );
-						remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+
 						$character_limit = '';
 						if ( isset( $arg[1] ) && $arg[1] ) {
 							$character_limit = $arg[1];
 						}
-						if ( get_the_excerpt() ) {
+
+						// Check if this is a Relevanssi-processed post (has relevance_score property).
+						// If so, use the Relevanssi-generated excerpt directly which includes search highlighting.
+						global $post;
+						$is_relevanssi_post = is_object( $post ) && property_exists( $post, 'relevance_score' ) && ! empty( $post->post_excerpt );
+
+						if ( $is_relevanssi_post ) {
+							// Use Relevanssi's pre-generated excerpt with search term highlighting.
+							$excerpt = $post->post_excerpt;
+							$excerpt = apply_filters( 'cwicly/excerpt', $excerpt );
+
 							if ( $character_limit ) {
-								$excerpt                                        = wp_strip_all_tags( get_the_excerpt() );
-								$excerpt                                        = apply_filters( 'cwicly/excerpt', $excerpt );
-								$excerpt                                        = substr( $excerpt, 0, $character_limit );
-								$final['postexcerpt'][ wp_json_encode( $arg ) ] = substr( $excerpt, 0, strrpos( $excerpt, ' ' ) );
+								// Strip tags if character limit is set.
+								$excerpt_plain = wp_strip_all_tags( $excerpt );
+								if ( strlen( $excerpt_plain ) > $character_limit ) {
+									$excerpt_plain = substr( $excerpt_plain, 0, $character_limit );
+									$excerpt_plain = substr( $excerpt_plain, 0, strrpos( $excerpt_plain, ' ' ) );
+								}
+								$final['postexcerpt'][ wp_json_encode( $arg ) ] = $excerpt_plain;
 							} else {
-								$final['postexcerpt'][ wp_json_encode( $arg ) ] = wp_strip_all_tags( get_the_excerpt() );
+								// Return the full Relevanssi excerpt (may contain HTML highlighting).
+								$final['postexcerpt'][ wp_json_encode( $arg ) ] = $excerpt;
 							}
-						} elseif ( isset( $arg[2] ) && $arg[2] ) {
-							$final['postexcerpt'][ wp_json_encode( $arg ) ] = $arg[2];
+						} else {
+							// Standard excerpt processing for non-Relevanssi queries.
+							add_filter( 'get_the_excerpt', array( '\Cwicly\Helpers', 'excerpt_gutenberg' ), 10, 2 );
+							remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+
+							if ( get_the_excerpt() ) {
+								if ( $character_limit ) {
+									$excerpt                                        = wp_strip_all_tags( get_the_excerpt() );
+									$excerpt                                        = apply_filters( 'cwicly/excerpt', $excerpt );
+									$excerpt                                        = substr( $excerpt, 0, $character_limit );
+									$final['postexcerpt'][ wp_json_encode( $arg ) ] = substr( $excerpt, 0, strrpos( $excerpt, ' ' ) );
+								} else {
+									$final['postexcerpt'][ wp_json_encode( $arg ) ] = wp_strip_all_tags( get_the_excerpt() );
+								}
+							} elseif ( isset( $arg[2] ) && $arg[2] ) {
+								$final['postexcerpt'][ wp_json_encode( $arg ) ] = $arg[2];
+							}
+
+							remove_filter( 'get_the_excerpt', array( '\Cwicly\Helpers', 'excerpt_gutenberg' ) );
+							add_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
 						}
-						remove_filter( 'get_the_excerpt', array( '\Cwicly\Helpers', 'excerpt_gutenberg' ) );
-						add_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
 
 						break;
 
